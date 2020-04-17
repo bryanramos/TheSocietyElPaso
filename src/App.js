@@ -1,26 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from 'react-router-dom';
+import styled from 'styled-components';
+import Header from './components/common/Header';
+import Footer from './components/common/Footer';
+import * as Constants from './Constants';
+import {
+    Home,
+    AboutUs,
+    Vendors,
+    NotFound
+} from './components/pages';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// styled components 
+const PageWrapper = styled.div`
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+`;
+
+const MainContent = styled.div`
+    flex: 1 0 auto;
+`;
+
+export default function App() {
+    return (
+        <Router>
+            <span style={{display: "none"}}>{Constants.Version}</span>
+            <PageWrapper>
+                <Header title={Constants.AppTitle} />
+                <MainContent>
+                    <Switch>
+                        <Route exact={true} path={Constants.Homepage} component={Home} />
+                        <Route exact={true} path={Constants.AboutUs} component={AboutUs} />
+                        <Route exact={true} path={Constants.Vendors} component={Vendors} />
+                        <Route component={NotFound} />
+                    </Switch>
+                </MainContent>
+                <Footer title={Constants.AppTitle} />
+            </PageWrapper>
+        </Router>
+    );
 }
 
-export default App;
