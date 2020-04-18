@@ -1,9 +1,15 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-const CatalogView = styled.div``;
+const CatalogView = styled.div`
+    margin-bottom: 40px;
+`;
 const Card = styled.div`
+    transition: all 200ms ease;
     box-shadow: rgba(0, 0, 0, 0.11) 0px 0.3px 0.9px, rgba(0, 0, 0, 0.133) 0px 1.6px 3.6px;
+    :hover {
+        box-shadow: rgba(0,0,0,0.11) 0px 0.3px 0.8px, rgba(0,0,0,0.133) 0px 12px 12px
+    }
     background: #fff;
     display: flex;
     background-clip: border-box;
@@ -17,7 +23,7 @@ const CardImage = styled.div`
     display: block;
     position: relative;
     overflow: hidden;
-    padding-top: 200px;
+    padding-top: 250px;
     background-position: center center;
     transition: 500ms padding ease;
     @media (max-width: 550px) {
@@ -31,10 +37,56 @@ const CardBody = styled.section`
     min-height: 1px;
     padding: 1.25rem;
 `;
-const CardTag = styled.span``;
-const CardTitle = styled.h4``;
-const CardDescription = styled.p``;
-const CardLinks = styled.div``;
+const CardTag = styled.span`
+    font-size: 0.9rem;
+    color: var(--society-lighter-gray);
+    margin-bottom: 10px;
+`;
+const CardTitle = styled.h2`
+    margin: 0;
+    color: var(--society-heading-color);
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+`;
+const CardDescription = styled.p`
+    flex-grow: 1;
+    margin: 5px 0 30px 0;
+`;
+const CardLinks = styled.div`
+    margin-bottom: 20px;
+    a {
+        color: var(--society-lighter-gray);
+        margin-right: 24px;
+    }
+    a svg {
+        fill: var(--society-lighter-gray);
+    }
+    a:hover {
+        color: var(--society-text-color-1);
+    }
+    a:hover svg {
+        color: var(--society-text-color-1);
+    }
+`;
+const CardURL = styled.a`
+    background: #dda4a3;
+    border-radius: 2px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0.875rem 0.75rem;  
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.5;
+    text-transform: uppercase;
+    transition: all 400ms ease;
+    :hover {
+        background: #ad8180;
+    }
+`;
+
 
 export default class VendorCatalog extends React.Component {
     render() {
@@ -56,7 +108,10 @@ export default class VendorCatalog extends React.Component {
                             };
                             return (
                                 <Card aria-label={vendor.vendorCategory} id={vendor.vendorCategory} key={i} className={vendor.id + " card"}>
-                                    <CardImage className="card-image" style={divStyle}></CardImage>
+                                    <a aria-label={"Visit " + vendor.vendorName + " website"} title={"Visit " + vendor.vendorName + " website"}  href={vendor.vendorURL}>
+                                        <CardImage className="card-image" style={divStyle}>
+                                        </CardImage>
+                                    </a>
                                     <CardBody>
                                         <CardTag>{vendor.vendorType}</CardTag>
                                         <CardTitle>
@@ -73,7 +128,17 @@ export default class VendorCatalog extends React.Component {
                                                 );
                                             })
                                         }
+                                        {
+                                            vendor.vendorPhones.map(function (vendorPhone, i) {
+                                                return (
+                                                    <a aria-label={"Call " + vendor.vendorName} title={"Call " + vendor.vendorName} href={"tel:" + vendorPhone.phone} key={i}>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone-alt" className="svg-inline--fa fa-phone-alt fa-w-16" role="img" width="22px" height="22px" viewBox="0 0 512 512"><path fill="currentColor" d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"/></svg>
+                                                    </a>
+                                                )
+                                            })
+                                        }
                                         </CardLinks>
+                                        <CardURL aria-label={"Visit " + vendor.vendorName + " website"} title={"Visit " + vendor.vendorName + " website"} href={vendor.vendorURL}>Visit Website</CardURL>
                                     </CardBody>
                                 </Card>
                             );

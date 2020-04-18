@@ -11,8 +11,11 @@ const VendorNavigationWrapper = styled.div`
     padding: 10px 0;
     margin-bottom: 20px;
 `;
-const CatalogResult = styled.p``;
+const CatalogResult = styled.p`
+    color: var(--society-lighter-gray);
+`;
 const VendorsDisplayed = styled.span`
+    color: var(--society-text-color-1);
     font-weight: bold;
 `;
 const SortingMenu = styled.div`
@@ -33,6 +36,7 @@ const OrderButton = styled.button`
     width: 35px;
     height: 35px;
     font-size: 16px;
+    cursor: pointer;
     :hover, :focus {
         background-color: rgba(95,99,104,0.157);
     }
@@ -47,6 +51,7 @@ const GridLayoutButton = styled.button`
     justify-content: center;
     padding: 0 5px;
     height: 35px;
+    cursor: pointer;
     :hover, :focus {
         background-color: rgba(95,99,104,0.157);
     }
@@ -81,13 +86,24 @@ const SelectionDropdown = styled.div`
         right: 0;
         z-index: 55;
     }
+    label {
+        position: absolute !important;
+        overflow: hidden !important;
+        -webkit-clip: rect(1px,1px,1px,1px) !important;
+        clip: rect(1px,1px,1px,1px) !important;
+        width: 1px !important;
+        height: 1px !important;
+        border: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
     select {
         box-shadow: none;
         -webkit-appearance: none;
     }
     select {
         background-color: #e7e7e8;
-        border-color: #e7e7e8;
+        border: none;
         box-shadow: 0 0 1px rgba(0,0,0,0);
         color: #1c1d1f;
         font-size: 16px;
@@ -202,6 +218,7 @@ export default class VendorCatalogNavigation extends React.Component {
                 </GridLayoutButtons>
 
                 <SelectionDropdown onChange={this.showVendorType}>
+                    <label htmlFor="vendors-type">Open show only specific vendor category menu</label>
                     <select id="vendors-type">
                         <option value="show-all">Show All</option>
                         <option value="bakery">Bakery</option>

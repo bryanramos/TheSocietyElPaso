@@ -3,10 +3,26 @@ import styled from 'styled-components';
 import VendorCatalogNavigation from '../vendors/VendorCatalogNavigation';
 import VendorCatalog from '../vendors/VendorCatalog';
 
+const Banner = styled.div`
+    background-position: bottom center;
+    h1 { 
+        color: var(--society-text-color-1);
+        margin: 20px 0;
+        @media (min-width: 767px) {
+            font-size: 4rem;
+        }
+    }
+`;
+
+
+
 const Bounds = styled.div`
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 .25rem;
+    @media (max-width: 767px) {
+        padding: 0 8px;
+    }
 `;
 
 export class Vendors extends React.Component {
@@ -56,8 +72,8 @@ export class Vendors extends React.Component {
     render() {
         return (
             <div>
-                <h1>Vendors</h1>
                 <Bounds>
+                <h1>Vendors</h1>
                     <VendorCatalogNavigation 
                         vendors={this.state.vendors}
                         sortType={this.state.sortType}

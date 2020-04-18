@@ -3,13 +3,13 @@
 }
 @media screen and (max-width: 991px) {
     .bounds {
-        padding: 0 8px;
+        padding: 0 12px;
     }
 }
 .grid-view .catalog-view {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
+    grid-gap: 36px;
 }
 @media screen and (max-width: 850px) {
     .grid-view .catalog-view {
@@ -28,4 +28,12 @@
     to {
         opacity: 1;
     }
-  }
+}
+.society-logo {
+    width: 250px;
+}
+@media screen and (max-width: 767px) {
+    .society-logo {
+        width: 150px;
+    }
+}

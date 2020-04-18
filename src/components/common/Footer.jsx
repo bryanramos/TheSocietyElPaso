@@ -6,13 +6,25 @@ const FooterWrapper = styled.footer`
     background: #fff;
 `;
 
+const Bounds = styled.div`
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 .25rem;
+    @media (max-width: 767px) {
+        padding: 0 8px;
+    }
+`;
+
 export default class Footer extends React.Component {
     render() {
         return (
-            <FooterWrapper className="bounds">
-                Copyright &copy; 2020 <Link to="/">The Society El Paso</Link>
-                Created by {this.props.author}
+            <FooterWrapper>
+                <Bounds>
+                    Copyright &copy; 2020 <Link to="/">The Society El Paso</Link>
+                    Created by {this.props.author}
+                </Bounds>
             </FooterWrapper>
         )
     }
 }
+

@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
-  --society-font: "Poppins";
+  --society-font: "Montserrat";
+  --society-lighter-gray: rgb(173, 173, 173);
+  --society-text-color-1: #333;
+  --society-heading-color: #333;
 }
 
 body {
@@ -9,6 +12,7 @@ body {
   font-family: var(--society-font), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
 
 code {
@@ -18,4 +22,22 @@ code {
 
 button {
   font-family: var(--society-font), Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  min-height: 100%;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+::selection {
+  background: #dda4a3; /* WebKit/Blink Browsers */
+  color: #fff;
+}
+::-moz-selection {
+  background: #dda4a3; /* Gecko Browsers */
+  color: #fff;
 }
