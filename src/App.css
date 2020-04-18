@@ -6,3 +6,26 @@
         padding: 0 8px;
     }
 }
+.grid-view .catalog-view {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+}
+@media screen and (max-width: 850px) {
+    .grid-view .catalog-view {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: 600px) {
+    .grid-view .catalog-view {
+        grid-template-columns: 1fr;
+    }
+}
+@keyframes example {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }

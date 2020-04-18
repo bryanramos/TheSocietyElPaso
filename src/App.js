@@ -18,7 +18,7 @@ import {
 
 // styled components 
 const PageWrapper = styled.div`
-    background: #eee;
+    background: #fff;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -43,7 +43,7 @@ export default function App() {
                         <Route component={NotFound} />
                     </Switch>
                 </MainContent>
-                <Footer title={Constants.AppTitle} />
+                <Footer title={Constants.AppTitle} author={Constants.Author} />
             </PageWrapper>
         </Router>
     );
